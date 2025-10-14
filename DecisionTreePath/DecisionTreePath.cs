@@ -10,11 +10,20 @@ public static class DecisionTreePath
     /// </summary>
     public static string LowestValueLeafPath(int[] arr)
     {
-        if (arr is null) throw new ArgumentNullException(nameof(arr));
-        if (arr.Length == 0) return string.Empty;
+        if (arr is null)
+        {
+            throw new ArgumentNullException(nameof(arr));
+        }
+
+        if (arr.Length == 0)
+        {
+            return string.Empty;
+        } 
 
         if (!TryFindMinLeafIndex(arr.AsSpan(), out var minLeafIndex))
+        {            
             return string.Empty;
+        }
 
         return BuildPathFromRoot(minLeafIndex);
     }
@@ -27,8 +36,15 @@ public static class DecisionTreePath
 
         for (int i = 0; i < n; i++)
         {
-            if (!IsLeaf(i, n)) continue;
-            if (data[i] >= minValue) continue;
+            if (!IsLeaf(i, n))
+            {
+                continue;
+            }
+
+            if (data[i] >= minValue)
+            {
+                continue;
+            } 
 
             minValue = data[i];
             minLeafIndex = i;
@@ -46,7 +62,10 @@ public static class DecisionTreePath
 
     private static string BuildPathFromRoot(int index)
     {
-        if (index == 0) return string.Empty;
+        if (index == 0)
+        {
+            return string.Empty;
+        }
 
         var steps = new Stack<char>();
 
@@ -60,8 +79,13 @@ public static class DecisionTreePath
         return new string(steps.ToArray());
     }
 
-    private static int GetParent(int index) => (index - 1) / 2;
+    private static int GetParent(int index)
+    {
+        return (index - 1) / 2;
+    }
 
     private static bool IsLeftChildOf(int childIndex, int parentIndex)
-        => (parentIndex * 2) + 1 == childIndex;
+    {
+        return (parentIndex * 2) + 1 == childIndex;
+    } 
 }

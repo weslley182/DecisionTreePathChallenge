@@ -67,3 +67,9 @@ Path: RRR
 - “Describing the path starting from the root” means the first character corresponds to the move from index `0` to one of its children, and so on until the target leaf.
 - Only **leaf nodes** (nodes without children inside the array bounds) participate in the minimum comparison.
 - The array may contain negative values.
+
+## 🎥 Related Video
+- [Check the video Explanation](https://youtu.be/P3mGz2p5ttk)
+
+## 🌐 Blog
+- https://wesleydevcamp.wordpress.com/2025/10/15/decision-tree-path-challenge/
